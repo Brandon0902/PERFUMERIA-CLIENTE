@@ -1,0 +1,40 @@
+<div class="container">
+    <!-- Título y descripción -->
+    <div class="text-center mt-4">
+      <h1 class="display-4 font-weight-bold text-dark mb-4">¡Bienvenido a <span class="text-primary">LEONMME</span>! Los mejores perfumes para todos</h1>
+      <p class="lead text-muted">Explora nuestra selección de productos y descubre la esencia perfecta para ti.</p>
+    </div>
+    
+    <!-- Contenedores circulares con imágenes -->
+    <div class="d-flex justify-content-between mt-4">
+      <div class="w-33 bg-light rounded-circle d-flex align-items-center justify-content-center" style="height: 250px; overflow: hidden;">
+        <img src="assets/images/leao.jpg" class="img-fluid rounded-circle" alt="Imagen 1">
+      </div>
+      <div class="w-33 bg-light rounded-circle d-flex align-items-center justify-content-center" style="height: 250px; overflow: hidden;">
+        <img src="assets/images/leao2.jpeg" class="img-fluid rounded-circle" alt="Imagen 2">
+      </div>
+      <div class="w-33 bg-light rounded-circle d-flex align-items-center justify-content-center" style="height: 250px; overflow: hidden;">
+        <img src="assets/images/leao3.jpeg" class="img-fluid rounded-circle" alt="Imagen 3">
+      </div>
+    </div>
+  
+    <div class="text-center mt-4">
+      <h1 class="display-4 font-weight-bold text-dark mb-4">Uno de nuestros colaboradores <span class="text-primary">RAFAEL LEAÓ</span></h1>
+      <p class="lead text-muted">Futbolista del AC Milan y Artista WAY 45</p>
+    </div>
+  
+    <!-- Muestra la lista de productos -->
+    <div class="row mt-4">
+      <div *ngFor="let product of products" class="col-sm-6 col-md-4 col-lg-3 mb-4">
+        <div class="card">
+          <div class="card-img-top" [ngStyle]="{ 'background-image': 'url(' + product.image + ')' }" style="height: 250px; background-size: cover; background-position: center; border-radius: .25rem;"></div>
+          <div class="card-body">
+            <h5 class="card-title text-dark">{{ product.name }}</h5>
+            <p class="card-text text-muted">${{ product.price }}</p>
+            <button class="btn btn-primary" (click)="addToCart(product)">Añadir al carrito</button>
+            <a [routerLink]="['/catalogo/detalle', product.id]" class="btn btn-link text-dark">Ver</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

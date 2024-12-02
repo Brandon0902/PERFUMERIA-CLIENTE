@@ -1,0 +1,89 @@
+<div class="card">
+    <div class="row">
+      <div class="col-md-8 cart">
+        <div class="title">
+          <div class="row">
+            <div class="col">
+              <h4><b>Shopping Cart</b></h4>
+            </div>
+            <div class="col text-right text-muted align-self-center">{{ cartItems.length }} items</div>
+          </div>
+        </div>
+  
+        <!-- Mostrar los items del carrito -->
+        <div *ngFor="let item of cartItems" class="row border-top border-bottom py-2">
+          <div class="row main align-items-center">
+            <div class="col-2">
+              <img class="img-fluid" [src]="item.image" alt="{{ item.name }}">
+            </div>
+            <div class="col">
+              <div class="text-muted">Product</div>
+              <div>{{ item.name }}</div>
+            </div>
+            <div class="col">
+            <a (click)="decreaseQuantity(item.id)" class="btn-decrease btn-adjust">-</a>
+            <span class="border btn-adjust">{{ item.quantity }}</span>
+            <a (click)="increaseQuantity(item.id)" class="btn-increase btn-adjust">+</a>
+            </div>
+            <div class="col text-right">
+              ${{ item.price * item.quantity }}
+              <span class="close" (click)="removeItem(item.id)">&#10005;</span>
+            </div>
+          </div>
+        </div>
+  
+        <div class="back-to-shop mt-3">
+          <a [routerLink]="['/catalogo']">&leftarrow; Back to shop</a>
+        </div>
+      </div>
+  
+      <div class="col-md-4 summary">
+        <div><h5><b>Summary</b></h5></div>
+        <hr>
+        <div class="row">
+          <div class="col">ITEMS {{ cartItems.length }}</div>
+          <div class="col text-right">${{ total }}</div>
+        </div>
+  
+        <form>
+          <div class="mt-4">
+            <label for="freight" class="block text-sm font-medium text-gray-700">Método de Envío</label>
+            <select id="freight" name="freight" autocomplete="freight" class="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" (change)="onShippingChange($event)">
+              <option value="300">Envío Rápido (+$300)</option>
+              <option value="100">Envío Estándar (+$100)</option>
+            </select>
+          </div>
+          <div class="mt-4">
+            <label for="userCity" class="block text-sm font-medium text-gray-700">Ciudad</label>
+            <input type="text" id="userCity" [(ngModel)]="userCity" name="userCity" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm sm:text-sm" required>
+          </div>
+          <div class="mt-4">
+            <label for="userPostalCode" class="block text-sm font-medium text-gray-700">Código Postal</label>
+            <input type="text" id="userPostalCode" [(ngModel)]="userPostalCode" name="userPostalCode" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm sm:text-sm" required>
+          </div>
+          <div class="mt-4">
+            <label for="userColony" class="block text-sm font-medium text-gray-700">Colonia</label>
+            <input type="text" id="userColony" [(ngModel)]="userColony" name="userColony" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm sm:text-sm" required>
+          </div>
+          <div class="mt-4">
+            <label for="userAddress" class="block text-sm font-medium text-gray-700">Dirección</label>
+            <input type="text" id="userAddress" [(ngModel)]="userAddress" name="userAddress" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm sm:text-sm" required>
+          </div>
+          <div>
+            <label for="userAddress" class="block text-sm font-medium text-gray-700">Transportista</label>
+            <select [(ngModel)]="selectedShipperId" name="shipVia" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" required>
+                <option *ngFor="let shipper of shippers" [value]="shipper.id">
+                  {{ shipper.companyname }}
+                </option>
+              </select>              
+          </div>
+          <div class="row mt-4 border-top pt-2">
+            <div class="col">TOTAL PRICE</div>
+            <div class="col text-right">${{ total }}</div>
+          </div>
+          <button type="button" class="btn btn-primary mt-4" (click)="checkout()">CHECKOUT</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  

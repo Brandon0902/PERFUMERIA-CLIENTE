@@ -1,0 +1,98 @@
+.custom-navbar {
+    position: fixed; /* Fija la navbar en la parte superior */
+    top: 0; /* Alinea la navbar en la parte superior de la ventana */
+    left: 0; /* Alinea la navbar a la izquierda de la ventana */
+    width: 100%; /* Asegura que la navbar ocupe todo el ancho de la ventana */
+    background: linear-gradient(to right, #3b82f6, #8b5cf6); /* Fondo con gradiente */
+    color: white;
+    z-index: 1000; /* Asegura que la navbar esté por encima de otros elementos */
+  
+    &:hover {
+      background: linear-gradient(to right, #8b5cf6, #3b82f6);
+      transition: background 0.3s ease-in-out;
+    }
+  
+    .navbar-brand {
+      color: #1f2937; /* Texto del logo */
+      font-weight: bold;
+    }
+  
+    .nav-link {
+      color: white;
+  
+      &:hover {
+        text-decoration: underline;
+        color: #f1f5f9; /* Cambia a un gris más claro al hacer hover */
+      }
+    }
+  
+    .cta-button {
+      display: inline-block;
+      padding: 0.5em 1em; /* Tamaño del botón */
+      font-size: 1em; /* Tamaño de la fuente del botón */
+      color: rgb(255, 255, 255); /* Color del texto del botón */
+      background-color: #8b5cf6; /* Color de fondo del botón */
+      text-decoration: none; /* Quita el subrayado del enlace */
+      border-radius: 5px; /* Bordes redondeados */
+      border: 2px solid black; /* Borde negro alrededor del botón */
+      margin-left: auto; /* Empuja el botón al final */
+      
+      &:hover {
+        background-color: rgb(0, 0, 0); /* Cambia el color de fondo al pasar el ratón por encima */
+        color: white; /* Cambia el color del texto al pasar el ratón por encima */
+      }
+    }
+  
+    .cart-icon {
+      position: relative;
+      cursor: pointer; /* Cambia el cursor al pasar sobre el ícono */
+      margin-left: auto; /* Alinea el ícono del carrito al final del contenedor */
+  
+      .fa-shopping-cart {
+        font-size: 1.5em; /* Tamaño del ícono */
+        transition: transform 0.3s ease, color 0.3s ease; /* Añade transición para animaciones suaves */
+  
+        &:hover {
+          color: #000000; /* Cambia el color del ícono al pasar el mouse */
+          transform: scale(1.1); /* Aumenta el tamaño del ícono al pasar el mouse */
+        }
+      }
+  
+      .added-to-cart {
+        color: #2bff01; /* Cambia el color del ícono cuando se ha agregado un producto al carrito */
+        transform: scale(1.2); /* Aumenta el tamaño del ícono cuando tiene la clase 'added-to-cart' */
+      }
+  
+      .cart-count {
+        position: absolute;
+        top: -10px; /* Ajusta según sea necesario */
+        right: -10px; /* Ajusta según sea necesario */
+        width: 24px; /* Tamaño del círculo */
+        height: 24px; /* Tamaño del círculo */
+        background-color: red;
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%; /* Hace el círculo redondeado */
+        font-size: 0.75em;
+        font-weight: bold;
+        transition: background-color 0.3s ease; /* Añade transición para cambios de color */
+      }
+  
+      // Cuando el carrito está vacío, el contador se vuelve rojo
+      &.empty-cart .cart-count {
+        background-color: red; /* Rojo cuando está vacío */
+      }
+  
+      // Cuando el carrito tiene productos, el contador puede tener otro color
+      &.full-cart .cart-count {
+        background-color: green; /* Verde para indicar productos en el carrito */
+      }
+    }
+  
+    .main-content {
+      padding-top: 60px; /* Ajusta este valor según la altura de tu navbar */
+    }
+  }
+  

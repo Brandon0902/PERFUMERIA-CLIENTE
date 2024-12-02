@@ -1,0 +1,35 @@
+.orders-page {
+    .container {
+      .order-card {
+        border: 1px solid #ddd;
+        padding: 20px;
+        margin-bottom: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  
+        h2 {
+          color: #3b82f6;
+          margin-top: 0;
+        }
+  
+        .product-image {
+          width: 100px;
+          height: 100px;
+          object-fit: cover;
+          margin-right: 10px;
+        }
+  
+        ul {
+          list-style: none;
+          padding: 0;
+  
+          li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+          }
+        }
+      }
+    }
+  }
+  

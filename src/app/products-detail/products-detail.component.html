@@ -1,0 +1,44 @@
+<div class="container py-4">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="card mb-4">
+          <div class="card-body">
+            <h2 class="card-title">{{ productDetails.name }}</h2>
+            <div class="mt-4">
+              <p class="card-text"><strong>Precio:</strong> ${{ productDetails.price }}</p>
+              <p class="card-text"><strong>Descripción:</strong> {{ productDetails.description }}</p>
+              <p class="card-text"><strong>Proveedor:</strong> {{ productDetails.supplier }}</p>
+              <p class="card-text"><strong>Región:</strong> {{ productDetails.region }}</p>
+              <p class="card-text"><strong>Categoría:</strong> {{ productDetails.category }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="row">
+          <ng-container *ngIf="productDetails.image">
+            <div class="col-md-4 mb-4">
+              <div class="card">
+                <img [src]="productDetails.image" [alt]="productDetails.name" class="card-img-top">
+              </div>
+            </div>
+          </ng-container>
+          <ng-container *ngIf="productDetails.image2">
+            <div class="col-md-4 mb-4">
+              <div class="card">
+                <img [src]="productDetails.image2" [alt]="productDetails.name" class="card-img-top">
+              </div>
+            </div>
+          </ng-container>
+          <ng-container *ngIf="productDetails.image3">
+            <div class="col-md-4 mb-4">
+              <div class="card">
+                <img [src]="productDetails.image3" [alt]="productDetails.name" class="card-img-top">
+              </div>
+            </div>
+          </ng-container>
+        </div>
+      </div>
+    </div>
+  </div>
+  
